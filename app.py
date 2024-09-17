@@ -15,7 +15,7 @@ similarity = pickle.load(open('similarity.pkl', 'rb'))
 movies_list = movies['title'].values
 
 # Streamlit header and selectbox
-st.header("Movie Recommender System")
+st.header("AI Movie Recommender")
 selectvalue = st.selectbox("Select a movie", movies_list)
 
 def Poster(movie_id):
