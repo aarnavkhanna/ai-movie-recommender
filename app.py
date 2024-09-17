@@ -7,14 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("API_KEY")
 
-# Load the movies and similarity data
 if not os.path.exists('similarity.pkl') or not os.path.exists('movies_list.pkl'):
     preprocess_data()
 movies = pickle.load(open('movies_list.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
 movies_list = movies['title'].values
 
-# Streamlit header and selectbox
 st.header("AI Movie Recommender")
 selectvalue = st.selectbox("Select a movie", movies_list)
 
@@ -32,7 +30,7 @@ def recommend(movie):
         recommend_poster = []
         for i in distance[1:6]: 
             recommended_movies.append(movies.iloc[i[0]].title)
-            recommend_poster.append(Poster(movies.iloc[i[0]]['id']))  # Access 'id' column directly
+            recommend_poster.append(Poster(movies.iloc[i[0]]['id']))
         return recommended_movies, recommend_poster
     else:
         return [f"The movie '{movie}' is not in the dataset."]
