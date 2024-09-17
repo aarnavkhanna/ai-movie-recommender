@@ -37,7 +37,7 @@ def recommend(movie):
     else:
         return [f"The movie '{movie}' is not in the dataset."]
 
-if st.button("Show Recommend"):
+if st.button("Show recommendations"):
     movie_name, movie_poster = recommend(selectvalue)
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
